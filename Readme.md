@@ -87,15 +87,17 @@ Java中调用程序
         public static Lib LIB;
         private static final String WIN_DLL = "动态链接库名.dll";
         static {
+            //注意这里可能有路径问题 即找不到DLL
             LIB = Native.load(WIN_DLL, Lib.class);
         }
     
-        //
+        //调用示例
         public static void main(String[] args) {
             String str = LIB.FunctionTest(toGoString("Hello"));
             System.out.println(str);
         }
         
+        //类型转换
         private static Lib.GoString.ByValue toGoString(String str) {
             Lib.GoString.ByValue str3 = new Lib.GoString.ByValue();
             str3.p = str;
@@ -103,3 +105,9 @@ Java中调用程序
             return str3;
         }
     }
+    
+找不到DLL/so文件 路径问题解决
+    
+    win10环境和Linux环境 是默认不含Dll路径的，可以通过以下方法引入DLL/SO文件
+    //环境DLL加载
+    NativeLibrary.addSearchPath(WIN_DLL, rootPath);
