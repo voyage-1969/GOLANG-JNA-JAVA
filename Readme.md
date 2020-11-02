@@ -1,5 +1,10 @@
 Java通过JNA与Golang交互
 
+示例
+   
+   java 调用端 https://github.com/voyage-1969/java-jna-golang-example 
+   golang实现端 https://github.com/voyage-1969/golang-jna-example
+
 什么是JNA
    
     JNA(Java Native Access)是一个开源的Java框架，是Sun公司推出的一种调用本地方法的技术，是建立在经典的JNI基础之上的一个框架。
